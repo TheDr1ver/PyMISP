@@ -747,6 +747,8 @@ class PyMISP(object):
         if self.debug:
             print('URL: ', url)
             print('Query: ', query)
+        # API requests weren't working properly - maybe a Python 2.7 problem. Adding this line:
+        query = {'request': query}
         response = session.post(url, data=json.dumps(query))
         return self._check_response(response)
 
